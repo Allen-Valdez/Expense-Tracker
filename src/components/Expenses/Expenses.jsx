@@ -1,10 +1,10 @@
 import ExpenseItem from './ExpenseItem';
-import Card from './Card';
+import Card from '../UI/Card';
 import './Expenses.css';
 
-const Expenses = ({expenses}) => {
+const Expenses = ({ expenses }) => {
 	return (
-		<Card className="expenses">
+		<Card className='expenses'>
 			<ExpenseItem expenses={expenses[0]} />
 			<ExpenseItem expenses={expenses[1]} />
 			<ExpenseItem expenses={expenses[2]} />
