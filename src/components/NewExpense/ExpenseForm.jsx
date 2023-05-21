@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveExpenseData }) => {
 	const emptyForm = {
 		title: '',
 		amount: '',
 		date: '',
 	};
 	const [formData, setFormData] = useState(emptyForm);
+	const { title, amount, date } = formData;
 
 	const onFormDataChange = e => {
 		const name = e.target.name;
@@ -17,16 +18,13 @@ const ExpenseForm = () => {
 		});
 	};
 
-	const { title, amount, date } = formData;
-
 	const onFormSubmit = e => {
 		e.preventDefault();
-		setFormData(prevState => {
-			const updatedForm = { ...prevState, date: new Date(prevState.date) };
-			console.log(updatedForm);
-			return updatedForm;
-		});
-
+		const expenseData = {
+			...formData,
+			date: new Date(date),
+		};
+		onSaveExpenseData(expenseData);
 		setFormData(emptyForm);
 	};
 
